@@ -2,11 +2,12 @@ const crypto = require('crypto')
 const express = require('express')
 const app = express()
 
+const salt = '..............'
 const port = 6125
 let n = 1
 
 app.get('/encrypt', (req, res) => {
-    crypto.pbkdf2(req.query.password, '..............', 200, 64, 'sha1', (err, derivedKey) => {
+    crypto.pbkdf2(req.query.password, salt, 200, 64, 'sha1', (err, derivedKey) => {
       if (err) throw err
       res.json({'password':derivedKey.toString('hex')});
     })
