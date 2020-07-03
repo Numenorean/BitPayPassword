@@ -1,2 +1,2 @@
 @echo off
-start node app.js
+start node boot.js
